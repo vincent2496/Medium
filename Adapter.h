@@ -2,17 +2,13 @@
 #include <tchar.h>
 #include <atlstr.h>
 
-//Client
 class Target
 {
 public:
-	virtual void SayChinese() 
-	{ 
-		std::cout << "say Chinese\n";
-	}
+	virtual void SayChinese() = 0;
 };
 
-// translator/interpreter
+//the one which be adapter
 class Adaptee
 {
 public:
@@ -22,6 +18,7 @@ public:
 	}
 };
 
+// translator/interpreter
 class Adatper : Target
 {
 private:
@@ -31,6 +28,7 @@ public:
 	void SayChinese() { pAdaptee->SayEnglish(); }
 };
 
+//Client
 int main()
 {
 	Adaptee pAdaptee;
